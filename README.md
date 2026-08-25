@@ -2,6 +2,8 @@
 
 This repository is the dated archive for finished Beauty Sleep static-ad batches.
 
+**Public gallery:** <https://abdalla-inc.github.io/Beauty-Sleep-Static-Ads/>
+
 ## Ad batches
 
 - [2026-08-25](./2026-08-25/) — 45 finished ads across Husband, Mums, Dubai dry-mouth, Menopause, and Snoring audiences.
