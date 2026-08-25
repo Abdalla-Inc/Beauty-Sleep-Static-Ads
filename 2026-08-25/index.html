@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Beauty Sleep creative library: husband, mums, Dubai dry-mouth, menopause and snoring ads.">
+  <title>All Ads — Beauty Sleep Creative Library</title>
+  <style>
+    :root {
+      --paper: #f7f3ef;
+      --card: #fffdfb;
+      --ink: #30182c;
+      --muted: #756873;
+      --line: #e7ddd9;
+      --pink: #f45a91;
+      --pink-soft: #fde2ec;
+      --plum: #4a1f43;
+      --green: #2d6a55;
+      --shadow: 0 14px 36px rgba(63, 29, 52, .09);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% -10%, rgba(244, 90, 145, .12), transparent 28rem),
+        var(--paper);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    button, input, select { font: inherit; }
+    button, select { cursor: pointer; }
+    a { color: inherit; }
+    .shell { width: min(1500px, calc(100% - 40px)); margin: 0 auto; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(231, 221, 217, .86);
+      background: rgba(247, 243, 239, .9);
+      backdrop-filter: blur(16px);
+    }
+    .topbar-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 850; letter-spacing: -.02em; }
+    .brand-mark {
+      width: 38px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: var(--pink);
+      font-family: Georgia, serif;
+      font-style: italic;
+      font-size: 22px;
+      box-shadow: 0 7px 18px rgba(244, 90, 145, .25);
+    }
+    .eyebrow { color: var(--pink); font-size: 12px; font-weight: 850; text-transform: uppercase; letter-spacing: .14em; }
+    .top-count { color: var(--muted); font-size: 14px; }
+
+    .hero { padding: 62px 0 28px; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 40px; }
+    h1 {
+      margin: 8px 0 14px;
+      max-width: 780px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(48px, 8vw, 92px);
+      line-height: .93;
+      letter-spacing: -.065em;
+      font-weight: 500;
+    }
+    .hero p { margin: 0; max-width: 660px; color: var(--muted); font-size: 17px; line-height: 1.65; }
+    .hero-stats { display: flex; gap: 10px; }
+    .stat {
+      min-width: 105px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255, 253, 251, .7);
+    }
+    .stat strong { display: block; font-size: 28px; letter-spacing: -.04em; }
+    .stat span { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
+
+    .controls {
+      margin: 24px 0 38px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 253, 251, .86);
+      box-shadow: var(--shadow);
+    }
+    .filter-row { display: grid; grid-template-columns: minmax(240px, 1fr) repeat(3, minmax(160px, auto)) auto; gap: 10px; }
+    .search-wrap { position: relative; }
+    .search-wrap::before { content: "⌕"; position: absolute; left: 15px; top: 9px; color: var(--muted); font-size: 24px; line-height: 1; }
+    input, select, .clear-btn {
+      height: 46px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      color: var(--ink);
+      background: white;
+      outline: none;
+    }
+    input { width: 100%; padding: 0 14px 0 45px; }
+    select { padding: 0 36px 0 13px; }
+    input:focus, select:focus { border-color: var(--pink); box-shadow: 0 0 0 3px var(--pink-soft); }
+    .clear-btn { padding: 0 16px; color: var(--muted); font-weight: 750; }
+    .clear-btn:hover { color: var(--ink); border-color: #ccbfc5; }
+    .audience-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .pill {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 9px 13px;
+      color: var(--muted);
+      background: transparent;
+      font-size: 13px;
+      font-weight: 750;
+    }
+    .pill:hover, .pill.active { color: var(--plum); border-color: #f3a4c1; background: var(--pink-soft); }
+
+    .results-bar { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 20px; }
+    .results-bar strong { font-size: 14px; }
+    .results-note { color: var(--muted); font-size: 13px; }
+    .group-section { margin: 0 0 54px; scroll-margin-top: 90px; }
+    .group-heading { display: flex; align-items: baseline; gap: 12px; margin: 0 0 18px; }
+    .group-heading h2 { margin: 0; font-family: Georgia, serif; font-size: 32px; font-weight: 500; letter-spacing: -.035em; }
+    .group-heading span { color: var(--muted); font-size: 13px; }
+    .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 20px; }
+
+    .ad-card {
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+      box-shadow: 0 9px 28px rgba(63, 29, 52, .055);
+      transition: transform .22s ease, box-shadow .22s ease;
+    }
+    .ad-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .image-btn { display: block; width: 100%; padding: 0; border: 0; background: #eadfe3; overflow: hidden; }
+    .image-btn img { display: block; width: 100%; height: auto; object-fit: contain; }
+    .card-body { padding: 17px; }
+    .meta-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 10px; }
+    .audience-tag { color: var(--pink); font-size: 11px; font-weight: 850; text-transform: uppercase; letter-spacing: .1em; }
+    .card-index { color: #a496a1; font-size: 11px; font-weight: 800; }
+    .ad-card h3 { margin: 0; font-size: 18px; line-height: 1.2; letter-spacing: -.025em; }
+    .problem { margin: 7px 0 0; color: var(--muted); font-size: 13px; line-height: 1.45; }
+    .labels { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 13px; }
+    .label { padding: 6px 8px; border-radius: 8px; background: #f4efed; color: #685b64; font-size: 11px; font-weight: 700; }
+    .label.angle { color: var(--green); background: #e9f3ee; }
+    .card-actions { display: flex; gap: 8px; margin-top: 15px; }
+    .card-actions a, .view-btn {
+      flex: 1;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 9px 10px;
+      text-align: center;
+      text-decoration: none;
+      color: var(--ink);
+      background: white;
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .view-btn { border-color: var(--plum); color: white; background: var(--plum); }
+    .card-actions a:hover { border-color: var(--pink); }
+    .empty { padding: 70px 20px; border: 1px dashed #d5c6cc; border-radius: var(--radius); text-align: center; color: var(--muted); }
+
+    footer { margin-top: 40px; padding: 34px 0 48px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+    footer .shell { display: flex; justify-content: space-between; gap: 20px; }
+
+    dialog {
+      width: min(1180px, calc(100vw - 32px));
+      max-height: calc(100vh - 32px);
+      padding: 0;
+      border: 0;
+      border-radius: 24px;
+      color: var(--ink);
+      background: var(--card);
+      box-shadow: 0 30px 100px rgba(33, 14, 29, .38);
+    }
+    dialog::backdrop { background: rgba(29, 13, 25, .82); backdrop-filter: blur(6px); }
+    .modal-grid { display: grid; grid-template-columns: minmax(0, 1fr) 300px; min-height: 600px; }
+    .modal-image-wrap { display: grid; place-items: center; padding: 26px; background: #21131e; }
+    .modal-image { display: block; max-width: 100%; max-height: calc(100vh - 84px); object-fit: contain; }
+    .modal-info { position: relative; padding: 58px 26px 26px; }
+    .close-btn { position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border: 1px solid var(--line); border-radius: 50%; background: white; color: var(--ink); font-size: 20px; }
+    .modal-info h2 { margin: 10px 0 10px; font-family: Georgia, serif; font-size: 30px; line-height: 1.02; font-weight: 500; letter-spacing: -.04em; }
+    .modal-description { color: var(--muted); line-height: 1.55; font-size: 14px; }
+    .modal-detail { padding: 14px 0; border-bottom: 1px solid var(--line); }
+    .modal-detail span { display: block; margin-bottom: 5px; color: #9a8c95; font-size: 10px; font-weight: 850; letter-spacing: .11em; text-transform: uppercase; }
+    .modal-detail strong { font-size: 13px; }
+    .modal-actions { display: grid; gap: 8px; margin-top: 20px; }
+    .modal-actions a { padding: 12px; border-radius: 11px; text-align: center; text-decoration: none; font-size: 13px; font-weight: 850; }
+    .download-main { color: white; background: var(--pink); }
+    .open-main { border: 1px solid var(--line); background: white; }
+    .modal-nav { display: flex; gap: 8px; margin-top: 8px; }
+    .modal-nav button { flex: 1; padding: 10px; border: 1px solid var(--line); border-radius: 10px; color: var(--ink); background: white; font-weight: 800; }
+
+    @media (max-width: 980px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-stats { justify-self: start; }
+      .filter-row { grid-template-columns: 1fr 1fr; }
+      .search-wrap { grid-column: 1 / -1; }
+      .clear-btn { grid-column: 1 / -1; }
+      .modal-grid { grid-template-columns: 1fr; }
+      .modal-image-wrap { min-height: 56vh; }
+      .modal-image { max-height: 54vh; }
+    }
+    @media (max-width: 620px) {
+      .shell { width: min(100% - 24px, 1500px); }
+      .topbar-inner { min-height: 62px; }
+      .top-count { display: none; }
+      .hero { padding-top: 42px; }
+      .hero-stats { width: 100%; }
+      .stat { flex: 1; min-width: 0; padding: 14px; }
+      .stat strong { font-size: 23px; }
+      .filter-row { grid-template-columns: 1fr; }
+      .search-wrap, .clear-btn { grid-column: auto; }
+      .filter-row select { width: 100%; }
+      .gallery { grid-template-columns: 1fr; }
+      .results-bar { align-items: flex-start; flex-direction: column; }
+      footer .shell { flex-direction: column; }
+      dialog { width: 100vw; max-height: 100vh; border-radius: 0; }
+      .modal-info { padding: 50px 20px 24px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <div class="brand"><span class="brand-mark">B</span><span>Beauty Sleep <span style="color:#a696a1;font-weight:600">/ Creative Library</span></span></div>
+      <div class="top-count">45 finished static ads · Offline-ready</div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">Creative collection · August 2026</div>
+          <h1>All Ads</h1>
+          <p>One place to review every husband, mums, Dubai dry-mouth, menopause and snoring creative. Filter by audience, problem or angle, then open any ad at full size or download the original.</p>
+        </div>
+        <div class="hero-stats" aria-label="Collection summary">
+          <div class="stat"><strong>45</strong><span>Creatives</span></div>
+          <div class="stat"><strong>5</strong><span>Audiences</span></div>
+          <div class="stat"><strong>PNG</strong><span>Originals</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="controls" aria-label="Ad filters">
+      <div class="filter-row">
+        <label class="search-wrap"><span hidden>Search ads</span><input id="search" type="search" placeholder="Search title, problem or angle…"></label>
+        <select id="problemFilter" aria-label="Filter by problem"><option value="all">All problems</option></select>
+        <select id="angleFilter" aria-label="Filter by angle"><option value="all">All angles</option></select>
+        <select id="groupBy" aria-label="Group ads by">
+          <option value="audience">Group: Audience</option>
+          <option value="problem">Group: Problem</option>
+          <option value="angle">Group: Angle</option>
+        </select>
+        <button class="clear-btn" id="clearFilters" type="button">Clear filters</button>
+      </div>
+      <div class="audience-pills" id="audiencePills" aria-label="Filter by audience"></div>
+    </section>
+
+    <div class="results-bar">
+      <strong id="resultCount">Showing 45 ads</strong>
+      <span class="results-note">Select an image for full-screen review.</span>
+    </div>
+    <div id="adSections"></div>
+  </main>
+
+  <footer>
+    <div class="shell"><span>Beauty Sleep Creative Library</span><span>Portable team review folder · No internet connection required</span></div>
+  </footer>
+
+  <dialog id="lightbox" aria-labelledby="modalTitle">
+    <div class="modal-grid">
+      <div class="modal-image-wrap"><img class="modal-image" id="modalImage" alt=""></div>
+      <aside class="modal-info">
+        <button class="close-btn" id="closeModal" type="button" aria-label="Close">×</button>
+        <div class="eyebrow" id="modalAudience"></div>
+        <h2 id="modalTitle"></h2>
+        <p class="modal-description" id="modalDescription"></p>
+        <div class="modal-detail"><span>Problem</span><strong id="modalProblem"></strong></div>
+        <div class="modal-detail"><span>Angle</span><strong id="modalAngle"></strong></div>
+        <div class="modal-detail"><span>Original file</span><strong id="modalFile"></strong></div>
+        <div class="modal-actions">
+          <a class="download-main" id="modalDownload" download>Download original PNG</a>
+          <a class="open-main" id="modalOpen" target="_blank">Open original in new tab</a>
+        </div>
+        <div class="modal-nav"><button id="prevAd" type="button">← Previous</button><button id="nextAd" type="button">Next →</button></div>
+      </aside>
+    </div>
+  </dialog>
+
+  <script>
+    const ads = [
+      {id:'h01', audience:'Husbands', file:'assets/husbands/01-2-13am-pillow.png', title:'2:13 AM Pillow', problem:'Partner snoring', angle:'Bedroom recognition', description:'A familiar middle-of-the-night scene: she sleeps while he negotiates with a pillow.'},
+      {id:'h02', audience:'Husbands', file:'assets/husbands/02-selfish-reasons.png', title:'Selfish Reasons', problem:'Partner snoring', angle:'Confession', description:'Turns his desire for quiet into a mutual sleep and relationship benefit.'},
+      {id:'h03', audience:'Husbands', file:'assets/husbands/03-three-signs.png', title:'Three Signs', problem:'Open-mouth sleep', angle:'Symptom checklist', description:'Connects snoring, bedside water and stale mornings to the hidden nighttime habit.'},
+      {id:'h04', audience:'Husbands', file:'assets/husbands/04-two-different-reviews.png', title:'Two Different Reviews', problem:'Purchase guilt', angle:'Dual perspective', description:'One strip is framed as her beauty ritual and his quieter night.'},
+      {id:'h05', audience:'Husbands', file:'assets/husbands/05-gift-self-care.png', title:'The Self-Care Gift', problem:'Gift awkwardness', angle:'Gift repositioning', description:'Reframes mouth tape as a thoughtful self-care gift with a two-person payoff.'},
+      {id:'h07', audience:'Husbands', file:'assets/husbands/07-stopped-doing-at-2am.png', title:'Things I Stopped Doing at 2 AM', problem:'Partner snoring', angle:'Behaviour transformation', description:'Crosses out the nudge, covered ears and spare room to show the calmer shared-bed outcome.'},
+      {id:'h08', audience:'Husbands', file:'assets/husbands/08-earplugs-review.png', title:'The Earplugs Review', problem:'Partner sleep disruption', angle:'Verified social proof', description:'A concrete customer outcome shows how the nighttime benefit can reach both partners.'},
+      {id:'h09', audience:'Husbands', file:'assets/husbands/09-before-the-sound.png', title:'Before the Sound', problem:'Open-mouth sleep', angle:'Cause reframe', description:'Challenges where he thinks snoring begins by pointing to the open-mouth habit upstream.'},
+      {id:'h10', audience:'Husbands', file:'assets/husbands/10-morning-breath.png', title:'Morning Breath Starts at Night', problem:'Dry, stale mornings', angle:'Relationship humour', description:'Connects open-mouth sleep with the morning closeness both partners want.'},
+      {id:'h12', audience:'Husbands', file:'assets/husbands/12-four-packs-pay-for-two.png', title:'Four Packs. Pay for Two.', problem:'Purchase hesitation', angle:'Offer-led retargeting', description:'Makes the bundle, free shipping and 99-night trial instantly understandable.'},
+
+      {id:'m01', audience:'Mums', file:'assets/mums/01-i-blamed-the-kids.png', title:'I Blamed the Kids', problem:'Morning exhaustion', angle:'Unexpected cause', description:'Challenges the belief that the children explain every part of an exhausted morning.'},
+      {id:'m02', audience:'Mums', file:'assets/mums/02-seven-hours-four-percent-battery.png', title:'7 Hours, 4% Battery', problem:'Unrestorative sleep', angle:'Battery metaphor', description:'Contrasts a reasonable number of hours in bed with a near-empty morning battery.'},
+      {id:'m03', audience:'Mums', file:'assets/mums/03-baby-slept-through.png', title:'The Baby Slept Through', problem:'Hidden sleep disruption', angle:'POV contradiction', description:'The baby finally sleeps through, but mum still wakes feeling wrecked.'},
+      {id:'m04', audience:'Mums', file:'assets/mums/04-three-oh-seven-water-again.png', title:'3:07 AM. Water Again.', problem:'Nighttime dry mouth', angle:'Object personification', description:'Makes the bedside water glass a clue that her mouth may fall open while she sleeps.'},
+      {id:'m05', audience:'Mums', file:'assets/mums/05-since-when-do-i-snore.png', title:'Since When Do I Snore?', problem:'New snoring', angle:'Text-message reveal', description:'A private partner exchange reveals a noisy nighttime habit she may not know about.'},
+
+      {id:'d01', audience:'Dubai — Dry Mouth', file:'assets/dubai-dry-mouth/01-3am-water-glass-4x5.png', title:'3 AM Water Glass', problem:'Nighttime dry mouth', angle:'Moment recognition', description:'Uses the familiar 3 a.m. reach for water to make nighttime dryness instantly recognisable.'},
+      {id:'d02', audience:'Dubai — Dry Mouth', file:'assets/dubai-dry-mouth/02-tongue-like-sandpaper-4x5.png', title:'Tongue Like Sandpaper', problem:'Morning dry mouth', angle:'Sensory metaphor', description:'Turns a rough, dry morning mouth into a vivid tactile problem.'},
+      {id:'d03', audience:'Dubai — Dry Mouth', file:'assets/dubai-dry-mouth/03-four-clues-checklist-4x5.png', title:'Four Clues Checklist', problem:'Open-mouth sleep', angle:'Symptom checklist', description:'A quick diagnostic-style list helps the viewer recognise connected nighttime clues.'},
+      {id:'d04', audience:'Dubai — Dry Mouth', file:'assets/dubai-dry-mouth/04-dry-mouth-loop-4x5.png', title:'The Dry-Mouth Loop', problem:'Recurring dry mouth', angle:'Problem loop', description:'Shows how open-mouth sleeping and repeated water wake-ups can become a nightly cycle.'},
+      {id:'d05', audience:'Dubai — Dry Mouth', file:'assets/dubai-dry-mouth/05-hydration-confession-4x5.png', title:'Hydration Confession', problem:'Hydration confusion', angle:'Confession', description:'Reframes persistent dryness as a nighttime mouth habit, not simply too little water.'},
+      {id:'d06', audience:'Dubai — Dry Mouth', file:'assets/dubai-dry-mouth/06-morning-vs-bedtime-4x5.png', title:'Morning vs Bedtime', problem:'Morning dry mouth', angle:'Cause-and-effect comparison', description:'Connects the uncomfortable morning symptom to what happened at bedtime.'},
+      {id:'d07', audience:'Dubai — Dry Mouth', file:'assets/dubai-dry-mouth/07-airflow-moisture-4x5.png', title:'Airflow & Moisture', problem:'Open-mouth airflow', angle:'Mechanism education', description:'Explains the simple link between nighttime airflow and lost mouth moisture.'},
+      {id:'d08', audience:'Dubai — Dry Mouth', file:'assets/dubai-dry-mouth/08-crowded-nightstand-4x5.png', title:'The Crowded Nightstand', problem:'Recurring dry mouth', angle:'Annotated still life', description:'Water, sprays, lozenges and lip balm point toward the nighttime cause behind the clutter.'},
+      {id:'d09', audience:'Dubai — Dry Mouth', file:'assets/dubai-dry-mouth/09-karin-bad-tasting-rug-review-4x5.png', title:'Karin’s Verified Review', problem:'Bad-tasting dry mouth', angle:'Verified social proof', description:'A memorable customer description makes the dry-mouth problem tactile and believable.'},
+      {id:'d10', audience:'Dubai — Dry Mouth', file:'assets/dubai-dry-mouth/10-centre-hole-product-demo-4x5.png', title:'The Centre-Hole Demo', problem:'Mouth-tape discomfort', angle:'Product demonstration', description:'Explains why the small centre hole exists and answers practical product objections.'},
+
+      {id:'x01', audience:'Menopause', file:'assets/menopause/01-menopause-sleep-control-4x5.png', title:'Menopause Sleep Control', problem:'Menopause sleep disruption', angle:'Feature-stack control', description:'A broad control ad that links menopause sleep problems to four product benefits.'},
+      {id:'x02', audience:'Menopause', file:'assets/menopause/02-erica-menopause-review-4x5.png', title:'Erica’s Menopause Review', problem:'Tricky menopause sleep', angle:'Verified social proof', description:'An identity-matched customer story builds belief through a menopause-specific review.'},
+      {id:'x03', audience:'Menopause', file:'assets/menopause/03-mouth-like-sandpaper-4x5.png', title:'Mouth Like Sandpaper', problem:'Morning dry mouth', angle:'Sensory metaphor', description:'A tactile dry-mouth visual makes the uncomfortable morning sensation immediate.'},
+      {id:'x04', audience:'Menopause', file:'assets/menopause/04-99-night-promise-4x5.png', title:'The 99-Night Promise', problem:'Purchase risk', angle:'Risk reversal', description:'Gives solution-aware buyers a long, low-risk window to test the bedtime ritual.'},
+      {id:'x05', audience:'Menopause', file:'assets/menopause/05-menopause-sleep-checklist-4x5.png', title:'Menopause Sleep Checklist', problem:'Menopause sleep symptoms', angle:'Symptom checklist', description:'Six everyday clues help women recognise the pattern without framing it as a diagnosis.'},
+      {id:'x06', audience:'Menopause', file:'assets/menopause/06-generic-tape-comparison-4x5.png', title:'Generic Tape vs Beauty Sleep', problem:'Mouth-tape discomfort', angle:'Product comparison', description:'Contrasts harsh generic tape with a gentle lip shape, centre hole and easier removal.'},
+      {id:'x07', audience:'Menopause', file:'assets/menopause/07-water-glass-2am-4x5.png', title:'The 2 AM Water Glass', problem:'Nighttime dry mouth', angle:'Object personification', description:'A warm, humorous water-glass message dramatizes a familiar dry-mouth wake-up.'},
+      {id:'x08', audience:'Menopause', file:'assets/menopause/08-carol-sleep-through-review-4x5.png', title:'Carol’s Sleep-Through Review', problem:'Dry-mouth wake-ups', angle:'Verified social proof', description:'A verified review turns sleeping through and waking refreshed into a grounded outcome.'},
+      {id:'x09', audience:'Menopause', file:'assets/menopause/09-open-mouth-sleep-4x5.png', title:'Open-Mouth Sleep', problem:'Open-mouth sleep', angle:'Cause reframe', description:'Explains how an open mouth can compound an already disrupted menopause night.'},
+      {id:'x10', audience:'Menopause', file:'assets/menopause/10-better-morning-transformation-4x5.png', title:'The Morning She Wants', problem:'Tired-looking mornings', angle:'Emotional transformation', description:'Moves from “Did I even sleep?” to the social reward of looking rested.'},
+
+      {id:'s01', audience:'Snoring', file:'assets/snoring/01-quiet-your-snoring.png', title:'Quiet Your Snoring', problem:'Snoring', angle:'Product proof stack', description:'Introduces the one-strip bedtime ritual with benefits, proof, offer and guarantee.'},
+      {id:'s02', audience:'Snoring', file:'assets/snoring/02-lara-quiet-review.png', title:'Lara’s Quiet Review', problem:'Bed-partner disruption', angle:'Verified social proof', description:'A real customer quote turns her bed partner’s “very quiet” comment into evidence.'},
+      {id:'s03', audience:'Snoring', file:'assets/snoring/03-mouth-open-mechanism.png', title:'Mouth-Open Mechanism', problem:'Open-mouth snoring', angle:'Mechanism metaphor', description:'Makes the moment the mouth falls open feel like the beginning of the snoring problem.'},
+      {id:'s04', audience:'Snoring', file:'assets/snoring/04-99-night-quiet-test.png', title:'The 99-Night Quiet Test', problem:'Purchase risk', angle:'Risk reversal', description:'Turns the guarantee into a simple night-one to night-99 bedtime trial.'},
+      {id:'s05', audience:'Snoring', file:'assets/snoring/05-four-signs-checklist.png', title:'Four Signs Checklist', problem:'Open-mouth sleep', angle:'Symptom checklist', description:'Connects the 3 a.m. nudge, bedside water, dry mouth and tired mornings.'},
+      {id:'s06', audience:'Snoring', file:'assets/snoring/06-paper-tape-vs-pink-lips.png', title:'Paper Tape vs Pink Lips', problem:'Mouth-tape discomfort', angle:'Product comparison', description:'Contrasts clinical rectangular tape with the lip-shaped fit and centre comfort hole.'},
+      {id:'s07', audience:'Snoring', file:'assets/snoring/07-snoring-dry-mouth.png', title:'Snoring at Night, Dry Mouth by Morning', problem:'Snoring and dry mouth', angle:'Symptom connection', description:'Links two familiar symptoms to the same open-mouth nighttime habit.'},
+      {id:'s08', audience:'Snoring', file:'assets/snoring/08-alvina-ear-plugs-review.png', title:'Alvina’s Earplugs Review', problem:'Bed-partner disruption', angle:'Verified social proof', description:'A customer story makes unused earplugs the concrete symbol of a quieter night.'},
+      {id:'s09', audience:'Snoring', file:'assets/snoring/09-before-you-make-a-sound.png', title:'Before You Make a Sound', problem:'Open-mouth snoring', angle:'Cause reframe', description:'Reframes the problem as beginning when the mouth falls open, before the noise.'},
+      {id:'s10', audience:'Snoring', file:'assets/snoring/10-3am-nudge-to-quiet.png', title:'From the 3 AM Nudge to Quiet', problem:'Partner snoring', angle:'Relationship transformation', description:'Shows the same couple moving from the familiar nudge to a calmer bedtime routine.'}
+    ];
+
+    const state = { audience: 'all', problem: 'all', angle: 'all', search: '', groupBy: 'audience' };
+    let visibleAds = [...ads];
+    let modalIndex = 0;
+    const $ = selector => document.querySelector(selector);
+    const escapeHtml = value => value.replace(/[&<>'"]/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));
+
+    function unique(field) {
+      return [...new Set(ads.map(ad => ad[field]))].sort((a, b) => a.localeCompare(b));
+    }
+
+    function populateSelect(id, field, allLabel) {
+      const select = $(id);
+      unique(field).forEach(value => {
+        const option = document.createElement('option');
+        option.value = value;
+        option.textContent = value;
+        select.append(option);
+      });
+      select.options[0].textContent = allLabel;
+    }
+
+    function renderAudiencePills() {
+      const audiences = unique('audience');
+      const values = ['all', ...audiences];
+      $('#audiencePills').innerHTML = values.map(value => {
+        const label = value === 'all' ? `All audiences (${ads.length})` : `${value} (${ads.filter(ad => ad.audience === value).length})`;
+        return `<button class="pill ${state.audience === value ? 'active' : ''}" data-audience="${escapeHtml(value)}" type="button">${escapeHtml(label)}</button>`;
+      }).join('');
+      document.querySelectorAll('[data-audience]').forEach(button => button.addEventListener('click', () => {
+        state.audience = button.dataset.audience;
+        renderAudiencePills();
+        render();
+      }));
+    }
+
+    function getFilteredAds() {
+      const term = state.search.trim().toLowerCase();
+      return ads.filter(ad => {
+        const matchesSearch = !term || [ad.title, ad.audience, ad.problem, ad.angle, ad.description].join(' ').toLowerCase().includes(term);
+        return matchesSearch
+          && (state.audience === 'all' || ad.audience === state.audience)
+          && (state.problem === 'all' || ad.problem === state.problem)
+          && (state.angle === 'all' || ad.angle === state.angle);
+      });
+    }
+
+    function cardTemplate(ad) {
+      const overallIndex = ads.findIndex(item => item.id === ad.id) + 1;
+      return `<article class="ad-card">
+        <button class="image-btn" type="button" data-open="${ad.id}" aria-label="View ${escapeHtml(ad.title)} full size">
+          <img src="${ad.file}" alt="${escapeHtml(ad.title)} — ${escapeHtml(ad.audience)} ad" loading="lazy">
+        </button>
+        <div class="card-body">
+          <div class="meta-row"><span class="audience-tag">${escapeHtml(ad.audience)}</span><span class="card-index">${String(overallIndex).padStart(2, '0')} / ${ads.length}</span></div>
+          <h3>${escapeHtml(ad.title)}</h3>
+          <p class="problem">${escapeHtml(ad.description)}</p>
+          <div class="labels"><span class="label">${escapeHtml(ad.problem)}</span><span class="label angle">${escapeHtml(ad.angle)}</span></div>
+          <div class="card-actions"><button class="view-btn" type="button" data-open="${ad.id}">View full size</button><a href="${ad.file}" download>Download</a></div>
+        </div>
+      </article>`;
+    }
+
+    function render() {
+      visibleAds = getFilteredAds();
+      $('#resultCount').textContent = `Showing ${visibleAds.length} ${visibleAds.length === 1 ? 'ad' : 'ads'}`;
+      const target = $('#adSections');
+      if (!visibleAds.length) {
+        target.innerHTML = '<div class="empty"><strong>No ads match these filters.</strong><br>Try clearing a filter or using a broader search.</div>';
+        return;
+      }
+      const field = state.groupBy;
+      const groups = visibleAds.reduce((map, ad) => {
+        const key = ad[field];
+        if (!map.has(key)) map.set(key, []);
+        map.get(key).push(ad);
+        return map;
+      }, new Map());
+      target.innerHTML = [...groups.entries()].map(([name, groupAds]) => `
+        <section class="group-section">
+          <div class="group-heading"><h2>${escapeHtml(name)}</h2><span>${groupAds.length} ${groupAds.length === 1 ? 'creative' : 'creatives'}</span></div>
+          <div class="gallery">${groupAds.map(cardTemplate).join('')}</div>
+        </section>`).join('');
+      document.querySelectorAll('[data-open]').forEach(button => button.addEventListener('click', () => openModal(button.dataset.open)));
+    }
+
+    function openModal(id) {
+      modalIndex = visibleAds.findIndex(ad => ad.id === id);
+      if (modalIndex < 0) return;
+      updateModal();
+      $('#lightbox').showModal();
+    }
+
+    function updateModal() {
+      const ad = visibleAds[modalIndex];
+      $('#modalImage').src = ad.file;
+      $('#modalImage').alt = `${ad.title} — ${ad.audience} ad`;
+      $('#modalAudience').textContent = ad.audience;
+      $('#modalTitle').textContent = ad.title;
+      $('#modalDescription').textContent = ad.description;
+      $('#modalProblem').textContent = ad.problem;
+      $('#modalAngle').textContent = ad.angle;
+      $('#modalFile').textContent = ad.file.split('/').pop();
+      $('#modalDownload').href = ad.file;
+      $('#modalOpen').href = ad.file;
+      $('#prevAd').disabled = visibleAds.length < 2;
+      $('#nextAd').disabled = visibleAds.length < 2;
+    }
+
+    function moveModal(step) {
+      modalIndex = (modalIndex + step + visibleAds.length) % visibleAds.length;
+      updateModal();
+    }
+
+    populateSelect('#problemFilter', 'problem', 'All problems');
+    populateSelect('#angleFilter', 'angle', 'All angles');
+    renderAudiencePills();
+    render();
+
+    $('#search').addEventListener('input', event => { state.search = event.target.value; render(); });
+    $('#problemFilter').addEventListener('change', event => { state.problem = event.target.value; render(); });
+    $('#angleFilter').addEventListener('change', event => { state.angle = event.target.value; render(); });
+    $('#groupBy').addEventListener('change', event => { state.groupBy = event.target.value; render(); });
+    $('#clearFilters').addEventListener('click', () => {
+      Object.assign(state, { audience:'all', problem:'all', angle:'all', search:'', groupBy:'audience' });
+      $('#search').value = '';
+      $('#problemFilter').value = 'all';
+      $('#angleFilter').value = 'all';
+      $('#groupBy').value = 'audience';
+      renderAudiencePills();
+      render();
+    });
+    $('#closeModal').addEventListener('click', () => $('#lightbox').close());
+    $('#prevAd').addEventListener('click', () => moveModal(-1));
+    $('#nextAd').addEventListener('click', () => moveModal(1));
+    $('#lightbox').addEventListener('click', event => { if (event.target === $('#lightbox')) $('#lightbox').close(); });
+    document.addEventListener('keydown', event => {
+      if (!$('#lightbox').open) return;
+      if (event.key === 'ArrowLeft') moveModal(-1);
+      if (event.key === 'ArrowRight') moveModal(1);
+    });
+  </script>
+</body>
+</html>
